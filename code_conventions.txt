@@ -1,0 +1,119 @@
+Specifications for Coding in C++
+
+Program File Structure
+Each C++ program file should have the following structure:
+
+an opening comment block describing the purpose and contents of the program (see below for the contents of opening comment blocks).
+preprocessor directives (#include, #pragma, #define, etc.)
+namespace
+function prototypes and forward declarations
+structure, class, and template definitions
+the  main  function (if needed)
+all other functions
+Please include the line  using namespace std ;   in your program under the preprocessor commands.  This will eliminate the use of a lot of  std::  throughout the code.
+
+ 
+Variable and Named Constants
+Variable names should be meaningful and descriptive.
+
+Exception: counters and the variable  temp  (used to hold temporary values)
+Variable names should be all in lowercase, with words separated by the underscore character ‘_’.  This is the convention used in our textbook and is known as "snakecase".
+Alternately, you can use camel case (like Java), where letters are in lower case, with each word capitalized after the first word, using no underscore characters.
+Variables always should be initialized explicitly when declared (exception: array elements).
+
+Named constants (declared using the  const  keyword) also should be meaningful and descriptive.
+
+Constants should be in all-caps.  Use the underscore character ‘_’ to separate words.  This is the Java convention.
+Alternately start with the letter 'k' followed by a descriptive name using camel case with the first word is capitalized, for example, "kDaysInWeek".   This is the "Google" convention.
+Avoid using abbreviations to avoid confusion.  (For example, does the variable  no_students  mean "number of students" or is it a flag to determine whether there any students are present?)
+
+Exception: A common abbreviation in C / C++ is to place "ptr..." in front of a variable name to designate a pointer variable.
+ 
+Including Files and Namespace
+If you are including a C++ package / library / class file such as  iostream  or  vector,  place it immediately after the opening comment block.
+
+standard C++ package names should be enclosed in  <   and  >.  This tells C++ to use a predetermined directory to find the file being included.
+C++ files, structures, and classes which you have written in separate files should be enclosed in double-quotes, indicating that the file is located in the current directory or folder.
+Always include the statement:  using namespace std ; .
+
+Functions and Prototypes
+Like variable names, function names also should be meaningful and descriptive.
+
+Function names should use camel case, where all letters are in lower case with each word capitalized except the first word, using no underscore characters.  This is the convention used in our textbook.
+Again, please avoid using abbreviations - spell all words completely.
+All functions (other than  main) should appear after  main  in the program file.
+
+The heading of a function should appear on its own line.  The body of a function should appear below the heading, and should be enclosed in braces  '{'  and  '}' unless it is a single line.
+
+ 
+Operators
+All binary and ternary operators (+, –, /, *, %, =, ==, >, >=, <, <=, ?, :) should have a single space on either side.
+
+Parenthesis should be used to simplify precedence of operations.
+
+ 
+Blocks and lines of code
+Blocks of code are surrounded by braces ‘{‘ and “}”.
+
+An opening brace can be on its own line (i.e., no code) or at the end of a branching or looping block or function heading.
+A closing brace should always be on its own line.
+Every line of code inside a block should be indented 3, 4, or 5 spaces.
+No line of code should contain more than one statement (i.e., semi-colon)
+Exception:  If the body of a function is comprised of a single statement, then the body can appear on a separate line completely enclosed in curly braces, for example:
+  public string getName()  
+      { return name ; }
+ 
+or optionally with no braces:
+
+  public string getName()  
+      return name ;
+ 
+Branching (if-else, switch) and looping (for, while, do-while) statements
+If the body of the branching or looping statement has more than one line, then the conditional part (or the "do" statement) should be on a separate line and the body should be on separate lines ending with a lone closing brace. For example:
+
+  for (int i = 0 ; i < limit ; i++) {  
+      cout << first_names[i] << " "  
+           << last_names[i] << " "
+           << student_id << " "
+           << gpa[i] << endl ;
+  }
+if there is only one statement in the body, then braces are not needed (but can be used if desired).  The statement should still be on its own line, rather than on the same line as the branching or looping  keyword and controlling expression.  For example:
+
+  for (int i = 0 ; i < limit ; i++)  
+      cout << names[i] << endl ;
+ 
+Printing Formatted Reports
+When printing a list of items in a report:
+
+provide a heading for the report
+each column in the report should have a heading
+columns containing text material should be aligned to the left, and columns containing only numeric data should be aligned to the right
+if numbers in a column have decimal points, the decimal points also should be aligned.
+ 
+Opening comment block – files which contain  main
+At the beginning of each program file containing the main function, please place a block of comments with the following information at the top:
+
+C++ file name and purpose (one line)
+author / programmer name(s)
+module number assigned
+project / homework / lab / exercise number
+a 1-3 sentence problem statement summarizing the project
+a complete algorithm or plan which describes how your program solves the problem statement
+Together, the problem statement and the algorithm should provide enough information so any other student in this class could program the project being described.
+
+ 
+Opening comments – other files
+For those files that don’t contain a  main  function, place a box of comments with the following information at the top of the file:
+
+C++ structure if class name and purpose (one line)
+author / programmer name(s)
+module number assigned
+project / homework / lab / exercise number
+a description of the contents of the file
+a description for each global variable or named constant
+a description of each function above its definition
+Example:
+Here's an example of how a program which counts the number of vowels in a string might appear:
+
+
+

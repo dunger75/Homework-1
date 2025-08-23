@@ -9,27 +9,24 @@
 
     Algorithm / Plan:
     1. Create an empty Planet vector.
-    2. Insert the given list of planets in the instructions of the assignment. 
-    3. Sorts the planets ascending in order of distance from the Sun.
-    4. Prints sorted information with formatting to make it neat.
-    5. Calculates total diameters and distances, and then prints and formats said totals with the above information.
+    2. Insert the given list of planets, placing each immediately into its correct position in ascending order of distance using an iterator insert.
+    3. Print sorted information with formatting to make it neat.
+    4. Calculate total diameters and distances, and then print and format said totals with the above information.
 
 */
 
 #include <iostream>
 #include <vector>
 #include <iomanip>
-#include "Planet.cpp"
+#include "Planet.h"
 
 using namespace std;
 
 //Creates empty Planet vector.
 vector <Planet> planets;
 
-//Function definition for inputting planets into the created vector.
-void insertPlanet(Planet input){
-    planets.insert(planets.begin(), input);
-};
+void insertPlanet(Planet input);
+
 
 int main(){
 
@@ -51,18 +48,6 @@ int main(){
 
     const char separation = ' ';
 
-    //Sorts vector by ascending order in regard to planetary distance.
-    Planet temp;
-    for(int i = 0; i < planets.size() -1 ; i++){
-        for(int j = 1; j < planets.size(); j++){
-            if (planets.at(j).getDistance() < planets.at(j - 1).getDistance()) {
-                temp = planets.at(j);
-                planets.at(j) = planets.at(j - 1);
-                planets.at(j - 1) = temp;
-            }
-        }
-    }
-
     //Prints formatted information for all planets.
     cout<<"  Solar System Planets by Distance" << endl << endl;
     cout<<"  Planet    Diameter  Dist. to Sun  " << endl;
@@ -80,9 +65,17 @@ int main(){
         totalDiameter+=i.getDiameter();
         totalDistance+=i.getDistance();
     }
-    cout<<right<<setfill(separation)<<setw(15) << "Total Diameter:" << setw(12) << "   Total Distance:" <<endl;
     cout<<right<<setfill(separation)<<setw(18) << totalDiameter << setw(15) << totalDistance<<endl;
 
 
 return 0;
+}
+
+//Function definition for inputting planets into the created vector.
+void insertPlanet(Planet input){
+    auto pos = planets.begin();
+    while (pos != planets.end() && pos->getDistance() < input.getDistance()) {
+        ++pos;
+    }
+    planets.insert(pos, input);
 }

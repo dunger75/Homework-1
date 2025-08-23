@@ -18,7 +18,7 @@
 #include <iostream>
 #include <vector>
 #include <iomanip>
-#include "Planet.h"
+#include "Planet.cpp"
 
 using namespace std;
 
